@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  doorman:
+    build: doorman/.
+    ports:
+      - "6060:9000"
+  librarian1:
+    build: librarian/.
+    ports:
+      - "7070:9000"
+  librarian2:
+    build: librarian/.
+    ports:
+      - "8080:9000"
+  librarian3:
+    build: librarian/.
+    ports:
+      - "9090:9000"
