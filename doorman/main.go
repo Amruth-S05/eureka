@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"github.com/amruth-s05/eureka/doorman/api"
 	"github.com/amruth-s05/eureka/doorman/common"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -13,6 +15,7 @@ func main() {
 	common.Log("Starting feeder...")
 	api.StartFeederSystem()
 
-	common.Log("Starting Doorman server on port 8080")
-	_ = http.ListenAndServe("localhost:8080", nil)
+	port := fmt.Sprintf(":%s", os.Getenv("API_PORT"))
+	common.Log(fmt.Sprintf("Starting Doorman server on port %s...\n", port))
+	_ = http.ListenAndServe(port, nil)
 }

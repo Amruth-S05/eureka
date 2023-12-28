@@ -3,17 +3,28 @@ version: '3'
 services:
   doorman:
     build: doorman/.
+    environment:
+      - API_PORT=${DOORMAN_PORT}
+      - LIB1=http://librarian1:${LIBRARIAN1_PORT}/api
+      - LIB2=http://librarian2:${LIBRARIAN2_PORT}/api
+      - LIB3=http://librarian3:${LIBRARIAN3_PORT}/api
     ports:
-      - "6060:9000"
+      - ${DOORMAN_PORT}:${DOORMAN_PORT}
   librarian1:
     build: librarian/.
+    environment:
+      - API_PORT=${LIBRARIAN1_PORT}
     ports:
-      - "7070:9000"
+      - ${LIBRARIAN1_PORT}:${LIBRARIAN1_PORT}
   librarian2:
     build: librarian/.
+    environment:
+      - API_PORT=${LIBRARIAN2_PORT}
     ports:
-      - "8080:9000"
+      - ${LIBRARIAN2_PORT}:${LIBRARIAN2_PORT}
   librarian3:
     build: librarian/.
+    environment:
+      - API_PORT=${LIBRARIAN3_PORT}
     ports:
-      - "9090:9000"
+      - ${LIBRARIAN3_PORT}:${LIBRARIAN3_PORT}
