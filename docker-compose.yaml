@@ -10,6 +10,10 @@ services:
       - LIB3=http://librarian3:${LIBRARIAN3_PORT}/api
     ports:
       - ${DOORMAN_PORT}:${DOORMAN_PORT}
+    links:
+      - librarian1
+      - librarian2
+      - librarian3
   librarian1:
     build: librarian/.
     environment:
