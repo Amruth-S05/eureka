@@ -14,6 +14,7 @@ services:
       - librarian1
       - librarian2
       - librarian3
+      - file_server
   librarian1:
     build: librarian/.
     environment:
@@ -32,3 +33,7 @@ services:
       - API_PORT=${LIBRARIAN3_PORT}
     ports:
       - ${LIBRARIAN3_PORT}:${LIBRARIAN3_PORT}
+  file_server:
+    build: file-server/.
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
