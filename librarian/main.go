@@ -13,7 +13,7 @@ func main() {
 	http.HandleFunc("/api/index", api.IndexHandler)
 	http.HandleFunc("/api/query", api.QueryHandler)
 
-	common.Log("Starting Eureka Librarian server on port 9090")
+	common.Log("Starting index...")
 	api.StartIndexSystem()
 
 	port := fmt.Sprintf(":%s", os.Getenv("API_PORT"))
